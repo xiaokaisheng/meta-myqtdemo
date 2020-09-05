@@ -16,11 +16,14 @@ SRC_URI = "git://github.com/xiaokaisheng/DemoProject.git;protocol=https"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "f1e0870a76d3d1a9f6cc7adc992d814e77bca520"
+SRCREV = "624a15d571a97ded93bd4ee66b1b2c163c4cace2"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "qtbase"
+# NOTE: unable to map the following CMake package dependencies: Qt5
+inherit cmake cmake_qt5 pkgconfig
 
-inherit qmake5
+# Specify any options you want to pass to cmake using EXTRA_OECMAKE:
+EXTRA_OECMAKE = ""
 
+DEPENDS = "qtbase qtwidgets"
